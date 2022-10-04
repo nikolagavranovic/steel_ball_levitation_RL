@@ -1,0 +1,9 @@
+Prvo je vrsen trening iz donje pozicije (početni uslovi su [1.0, 0.0, 0.0]) u 20 000 epizoda u kojoj je svaka epizoda imala 500 iteracija (1 iteracija vremenski odgovara periodi odabiranja
+koja je 0.1s i u njoj se vrsi azuriranje promenljivih stanja po diferncnoj jednačini). Nakon završetka testirani algoritam je pokaza da je istreniran da podigne lopticu, zadrži je 
+nekoliko trenutaka u vazduhu i onda (usljed prejake struje u kalemu) lansira lopticu u krajnje gornji položaj, iz koje nije uspio lopticu da spusti nazad.
+Da bi se obučio algoritam i za takve uslove, izvršeno je novo treniranje od 20 000 epizoda, za početne uslove [0.1, 0.0, 0.0] i [0.1, 0.0, 0.1] (za svaku kombinaciju po 10 000 epizoda).
+Nakon obuke algoritam je pokazao da može da levitira lopticu, ali levitiranje nije vršeno oko odgovarajuće referentne vrednost (0.5). 
+Zbog toga je izvršeno dodatno treniranje na sledeći način: za početne pozicije 1.0, 0.95, 0.9, ...., 0.15, 0.10, 0.05 po 5 000 epizoda. Rezultati: još ćemo vidjeti...
+Da bi algoritam što više istražio okolinu za ovako formirane različite početne uslove, uspostavljena je veoma eksplorativna politika (epsilon = 0.5), odnosno sa 50% verovatnoće
+se birala nasumična akcija, a sa 50% optimalna akcija za to stanje u datom trenutku. Ovo je važilo za prvu epizodu (za svaku kombinaciju početnih usloba), i u svakoj narednoj epizodi
+epsilon je linearno opadalo do 0.01 u poslednjoj (5000-toj) epizodi.
